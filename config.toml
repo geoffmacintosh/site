@@ -8,3 +8,6 @@ theme = "etch"
 
 [author]
     name = "Geoff MacIntosh"
+
+[markup.goldmark.renderer]
+    unsafe = true
