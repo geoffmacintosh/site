@@ -7,17 +7,7 @@
     HUGO_ENV = "production"
 
 [[redirects]]
-    from = "http://into.sh/*"
-    to = "https://mac.into.sh/:splat"
-    status = 301
-    force = true
-
     from = "https://into.sh/*"
-    to = "https://mac.into.sh/:splat"
-    status = 301
-    force = true
-
-    from = "http://mac.into.sh/*"
     to = "https://mac.into.sh/:splat"
     status = 301
     force = true
