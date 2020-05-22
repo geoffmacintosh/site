@@ -2,6 +2,7 @@ baseURL = "http://mac.into.sh/"
 languageCode = "en-ca"
 title = "mac.into.sh"
 theme = "etch"
+pygmentsCodeFences = true
 
 [permalinks]
     posts = "/:slug/"
