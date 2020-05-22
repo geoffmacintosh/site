@@ -1,4 +1,4 @@
-baseURL = "http://mac.into.sh/"
+baseURL = "https://mac.into.sh/"
 languageCode = "en-ca"
 title = "mac.into.sh"
 theme = "etch"
