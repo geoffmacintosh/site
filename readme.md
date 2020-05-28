@@ -3,3 +3,7 @@
 # mac.into.sh
 
 This is the source for [my silly blog](https://mac.into.sh), built with Hugo.
+
+## Licenses
+
+All my code is MIT licensed. All my writing is CC BY-NC-SA licensed, which I think makes it much more restrictive than the code. I don't know if that's a good idea or not. Oh well.
