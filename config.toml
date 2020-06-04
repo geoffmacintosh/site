@@ -2,7 +2,12 @@ baseURL = "https://mac.into.sh/"
 languageCode = "en-ca"
 title = "mac.into.sh"
 theme = "etch"
+
 pygmentsCodeFences = true
+pygmentsUseClasses = true
+
+[params]
+    highlight = true
 
 [permalinks]
     posts = "/:slug/"
@@ -12,3 +17,5 @@ pygmentsCodeFences = true
 
 [markup.goldmark.renderer]
     unsafe = true
+
+disableKinds = ["taxonomy", "taxonomyTerm", "section", "page"]
