@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <base href="{{ .Site.BaseURL }}">
-    <title>{{ .Title }} - mac.into.sh</title>
-   {{ with .OutputFormats.Get "rss" -}}
-    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
-{{ end -}}
-</head>
-<body lang="en">
+<header id="banner">
+    <h2><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h2>
+    <nav>
+        <ul>
+            <li><a href="{{ .Site.BaseURL }}">posts</a></li>
+            {{ range where .Site.Home.Pages "Title" "!=" "Posts" }}
+            <li>
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </li>
+            {{ end }}
+        </ul>
+    </nav>
+</header>
