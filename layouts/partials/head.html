@@ -1,24 +1,25 @@
 <head>
-    <title>{{ .Title }}</title>
+  <title>{{ .Title }}</title>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{ with .Site.Params.description }}
-    <meta name="description" content="{{ . }}">
-    {{ end }}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {{ with .Site.Params.description }}
+  <meta name="description" content="{{ . }}">
+  {{ end }}
 
-    <style type="text/css" media="screen">
-        {{ partial "css/main.css" . | safeCSS }}
-    </style>
+  {{ $main := resources.Get "css/main.css" | minify }}
+  <link rel="stylesheet" type="text/css" href="{{ $main.Permalink }}">
 
-    <style type="text/css" media="(min-width: 770px)">
-        {{ partial "css/min770px.css" . | safeCSS }}
-    </style>
+  {{ $min := resources.Get "css/min770px.css" | minify }}
+  <link rel="stylesheet" media="(min-width: 770px)" type="text/css" href="{{ $min.Permalink }}">
 
-    {{ if .Site.Params.highlight }}
-        {{ $syntax := resources.Get "css/syntax.css" | minify }}
-        <link rel="stylesheet" href="{{ $syntax.Permalink }}">
-    {{ end }}
+  {{ if .Site.Params.highlight }}
+  {{ $syntax := resources.Get "css/syntax.css" | minify }}
+  <link rel="stylesheet" type="text/css" href="{{ $syntax.Permalink }}">
+  {{ end }}
 
-    <link rel="shortcut icon" href='{{ "favicon.ico" | absURL }}'>
+  <link rel="alternate" type="application/rss+xml"
+        href="https://mac.into.sh/index.xml" title="{{ .Title }}">
+
+  <link rel="shortcut icon" href='{{ "favicon.ico" | absURL }}'>
 </head>
