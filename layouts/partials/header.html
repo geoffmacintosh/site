@@ -3,7 +3,7 @@
   <nav>
     <ul>
       <li><a href="{{ .Site.BaseURL }}">posts</a></li>
-      <li><a href="https://mac.into.sh/index.xml">rss</a></li>
+      <li><a href="{{ .Site.BaseURL }}index.xml">rss</a></li>
       {{ range where .Site.Home.Pages "Title" "!=" "Posts" }}
       <li>
         <a href="{{ .Permalink }}">{{ .Title }}</a>

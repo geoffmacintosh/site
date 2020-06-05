@@ -1,5 +1,5 @@
 <head>
-  <title>{{ .Title }}</title>
+  <title>{{ .Title }} - {{ .Site.Title }}</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,7 @@
   {{ end }}
 
   <link rel="alternate" type="application/rss+xml"
-        href="https://mac.into.sh/index.xml" title="mac.into.sh">
+        href="{{ .Site.BaseURL}}index.xml" title="{{ .Site.BaseURL}}">
 
   <link rel="shortcut icon" href='{{ "favicon.ico" | absURL }}'>
 </head>
