@@ -11,3 +11,9 @@
     to = "https://mac.into.sh/:splat"
     status = 301
     force = true
+
+[[plugins]]
+    package = "netlify-plugin-submit-sitemap"
+    [plugins.inputs]
+    baseUrl = "https://mac.into.sh"
+    sitemapPath = "/sitemap.xml"
