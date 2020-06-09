@@ -17,3 +17,6 @@
     [plugins.inputs]
     baseUrl = "https://mac.into.sh"
     sitemapPath = "/sitemap.xml"
+
+[[plugins]]
+    package = "netlify-plugin-hugo-cache-resources"
