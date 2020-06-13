@@ -7,16 +7,8 @@
   <meta name="description" content="{{ . }}">
   {{ end }}
 
-  {{ $main := resources.Get "css/main.css" | minify }}
-  <link rel="stylesheet" type="text/css" href="{{ $main.Permalink }}">
-
-  {{ $min := resources.Get "css/min770px.css" | minify }}
-  <link rel="stylesheet" media="(min-width: 770px)" type="text/css" href="{{ $min.Permalink }}">
-
-  {{ if .Site.Params.highlight }}
-  {{ $syntax := resources.Get "css/syntax.css" | minify }}
-  <link rel="stylesheet" type="text/css" href="{{ $syntax.Permalink }}">
-  {{ end }}
+  {{ $style := resources.Get "main.scss" | toCSS | minify }}
+  <link rel="stylesheet" type="text/css" href="{{ $style.Permalink }}">
 
   <link rel="alternate" type="application/rss+xml"
         href="{{ .Site.BaseURL}}index.xml" title="{{ .Site.BaseURL}}">
