@@ -2,13 +2,9 @@
   <h2><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h2>
   <nav>
     <ul>
-      <li><a href="{{ .Site.BaseURL }}">posts</a></li>
+      <li><a href="{{ .Site.BaseURL }}">home</a></li>
+      <li><a href="{{ .Site.BaseURL }}about/">about</a></li>
       <li><a href="{{ .Site.BaseURL }}index.xml">rss</a></li>
-      {{ range where .Site.Home.Pages "Title" "!=" "Posts" }}
-      <li>
-        <a href="{{ .Permalink }}">{{ .Title }}</a>
-      </li>
-      {{ end }}
     </ul>
   </nav>
 </header>
