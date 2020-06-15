@@ -1,6 +1,7 @@
 baseURL = "https://mac.into.sh/"
 languageCode = "en-ca"
 title = "mac.into.sh"
+enableRobotsTXT = true
 
 pygmentsCodeFences = true
 pygmentsUseClasses = true
