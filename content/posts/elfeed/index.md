@@ -2,6 +2,7 @@
 title = "Elfeed"
 author = ["Geoff MacIntosh"]
 date = 2020-05-20T00:00:00-02:30
+tags = ["emacs"]
 draft = false
 +++
 
@@ -22,7 +23,7 @@ I have [Elfeed](https://github.com/skeeto/elfeed) set up in a single use-package
    ("q" . actuator-elfeed-save-db-and-bury)
    ("R" . actuator-elfeed-mark-all-as-read))
   :custom
-  (elfeed-search-filter "@6-months-ago +unread ")
+  (elfeed-search-filter "@1-week-ago +unread ")
   :config
   <<shortcuts>>
   <<faces>>
@@ -94,18 +95,11 @@ Filters are kind of the star of Elfeed. I mostly use them to remove items that I
                               :entry-title "Q\\:"
                               :remove 'unread
                               :add '(junk debug6)))
-```
-
-
-## Text Width {#text-width}
-
-Elfeed uses the built-in package shr---Simple HTML Renderer---to display articles. That's true of a bunch of Emacs' packages I expect, but this is the only case where I (knowingly) make use of it so far, so I'm configuring it here for now.
-
-```emacs-lisp
-(use-package shr
-  :straight nil
-  :custom
-  (shr-width 75))
+(add-hook 'elfeed-new-entry-hook
+          (elfeed-make-tagger :feed-url "cestlaz"
+                              :entry-title '(not "emacs")
+                              :add '(junk debug7)
+                              :remove 'unread))
 ```
 
 
@@ -142,7 +136,6 @@ You don't need to do anything special to load Elfeed. You can set up a keybindin
 
 You can just go post-by-post and use `r` to mark individual posts as read. I stole this function from [Mike Zamansky](https://cestlaz-nikola.github.io/posts/using-emacs-29%20elfeed/) because it seemed like a nice addition.
 
-<a id="code-snippet--elfeed-mark-all-as-read"></a>
 ```emacs-lisp
 (defun actuator-elfeed-mark-all-as-read ()
     "Mark all feeds in search as read. Taken from Mike Zamansky"
@@ -207,7 +200,10 @@ I'm actually surprised I don't use the excellent [Elfeed-org](https://github.com
         ("https://twitchrss.appspot.com/vod/dragonfriends")
         ("https://www.youtube.com/feeds/videos.xml?channel_id=UC8tThli1ZY7LW5Dxqr3Y0jA")
         ("https://sewmuchblack.de/feed/")
+        ("https://updates.orgmode.org/feed/updates")
+        ("https://blog.aaronbieber.com/posts/index.xml")
         ("https://www.tchwr.com/feed/")
+        ("https://www.arp242.net/feed.xml")
         ("https://shellzine.net/feed/")
         ("https://notmyhostna.me/atom.xml")
         ("https://www.g-central.com/feed/")
@@ -275,13 +271,10 @@ I'm actually surprised I don't use the excellent [Elfeed-org](https://github.com
         ("https://zzamboni.org/index.xml")
         ("https://eightiesandninetiesanime.tumblr.com/rss" image)
         ("https://1041uuu.tumblr.com/rss" image)
-        ("https://bubblegumcrash.tumblr.com/rss" comic)
-        ("https://cyberianpunks.tumblr.com/rss" image)
         ("https://www.drugsandwires.fail/feed/" comic)
         ("http://feeds.feedburner.com/Explosm" comic)
         ("https://www.foxtrot.com/feed/" comic)
         ("http://feeds.feedburner.com/PoorlyDrawnLines" comic)
-        ("https://rekall.me/rss" image)
         ("http://collet66.blog52.fc2.com/?xml")
         ("https://reddit-top-rss.herokuapp.com/?subreddit=deusex&averagePostsPerDay=2&view=rss")
         ("https://reddit-top-rss.herokuapp.com/?subreddit=cyberpunk&averagePostsPerDay=2&view=rss")
@@ -291,53 +284,12 @@ I'm actually surprised I don't use the excellent [Elfeed-org](https://github.com
         ("https://reddit-top-rss.herokuapp.com/?subreddit=techwear&averagePostsPerDay=2&view=rss")
         ("https://reddit-top-rss.herokuapp.com/?subreddit=formula1&averagePostsPerDay=1&view=rss")
         ("https://reddit-top-rss.herokuapp.com/?subreddit=malefashionadvice&averagePostsPerDay=1&view=rss")
-        ("https://noonker.github.io/index.xml" emacs)))
+        ("https://reddit-top-rss.herokuapp.com/?subreddit=ClothingTechnology&averagePostsPerDay=1&view=rss")
+        ("https://noonker.github.io/index.xml" emacs)
+        ("https://mac.into.sh/index.xml")))
 ```
 
 Honestly, it feels weird to share my entire collection of feeds in public. Like I'm sharing something very personal. Anyway, that's it. That's my Elfeed.
-
-
-## The future {#the-future}
-
-There are a bunch of things I'd like to add to my Elfeed setup that I haven't  yet.
-
-
-### <span class="org-todo todo TODO">TODO</span> Make the interface prettier {#make-the-interface-prettier}
-
-Obviously I'm going to need to fix the custom face, but here are the basic faces that Elfeed uses:
-
--   elfeed-search-date-face
--   elfeed-search-feed-face
--   elfeed-search-filter-face
--   elfeed-search-last-update-face
--   elfeed-search-tag-face
--   elfeed-search-title-face
--   elfeed-search-unread-count-face
--   elfeed-search-unread-title-face
--   message-header-name
--   message-header-subject
--   message-header-other
--   variable-pitch
-
-
-### <span class="org-todo todo TODO">TODO</span> Look into sync options {#look-into-sync-options}
-
-I don't know if I care enough about reading RSS on my phone, but maybe I'd like it if I tried it. There seem to be two main ways. Elfeed-web is a sub-package that is part of Elfeed proper, which creates a single webpage using an Emacs HTML server that could be read by a phone I assume. Seems like I might have to do some fiddling, and it would only work if the computer running Elfeed is on---which is currently my laptop. The other option is [Elfeed-protocol](https://github.com/fasheng/elfeed-protocol) combined with a web-based RSS reader that's compatible. That would probably require paying money for either a webhost or a subscription-based feed reader, and checking to see how my elfeed filters work with it.
-
-
-### <span class="org-todo todo TODO">TODO</span> Set up video integration {#set-up-video-integration}
-
-A portion of my use of Elfeed involves watching Youtube videos. There are a bunch of ways to hook Elfeed into various video-playing tools like MPV, or even the Emacs music thing called EMMS. I should see if I can make one of those work.
-
-
-### <span class="org-todo todo TODO">TODO</span> Look into Elfeed-score {#look-into-elfeed-score}
-
-[Elfeed-score](https://github.com/sp1ff/elfeed-score/) seems like a neat way to enhance my on-or-off filters. I like using the filters to kill stuff that I absolutely don't want, but a ranking system might be neat.
-
-
-### <span class="org-todo todo TODO">TODO</span> Set up EWW's readability features for even more Emacs {#set-up-eww-s-readability-features-for-even-more-emacs}
-
-I could set up a keybinding to auto-open feeds in EWW so I don't need to use Safari for stuff that doesn't need Safari. I actually can't see a reason to do this, but I kind of want to.
 
 
 ## Additional resources {#additional-resources}
