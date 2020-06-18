@@ -1,6 +1,7 @@
 +++
 title = "East Coast Trail: Petty Harbour Hike"
 author = ["Geoff MacIntosh"]
+date = 2020-06-17T00:00:00-02:30
 draft = false
 +++
 
