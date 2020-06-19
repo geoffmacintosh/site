@@ -1,3 +1,133 @@
-@import 'second';
-@import 'min770px';
+$fg-colour: #313a3d;
+$fg-lighter: lighten($fg-colour, 25%);
+$blue: #007dfa;
+$headline-font-stack: 'Helvetica Neue', 'Arial', sans-serif;
+$body-font-stack: 'Helvetica Neue', 'Arial', sans-serif;
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html {
+    //font-size: 62.5%;
+}
+
+body {
+    //font-size: 13px;
+    font-size: 1rem;
+    font-family: $body-font-stack;
+    color: $fg-colour;
+    //width: 100%;
+    margin: 0 auto;
+    //padding: 0;
+    line-height: 1.7;
+    @media (prefers-color-scheme: dark) {
+        color: #ebebeb;
+        background: #121212;
+    }
+    max-width: 40em;
+}
+
+//@import 'second';
+//@import 'min770px';
+
+header {
+    margin: 25px 0;
+    #title {
+        display: inline;
+        font-size: 150%;
+        font-weight: bold;
+    }
+    a {
+        color: $fg-colour;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline; //FIXME
+    }
+    nav {
+        display: inline-block;
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            li {
+                display: inline;
+                margin: 0 0.3em;
+                a {
+                    color: $fg-lighter;
+                }
+            }
+        }
+    }
+}
+
+main {
+    ul {
+        list-style-type: none;
+        padding: 0;
+        li {
+            margin: 0 0 0.3em 0;
+            a {
+                text-decoration: none;
+                color: $blue;
+            }
+        }
+    }
+    time {
+        font-size: 90%;
+        margin: 0 0 0 1em;
+        padding: 0;
+        color: $fg-lighter;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+        padding: 0;
+        display: inline;
+    }
+    header {
+        margin: 0;
+        padding: 0;
+    }
+    p {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+table {
+    margin: 0 auto;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+td {
+    margin: 0;
+    padding: 0 0.5em;
+}
+
+figure {
+    margin: 0;
+}
+
+img {
+    width: 100%
+}
+
+pre {
+    display: block;
+    overflow-x: auto;
+}
+
 @import 'syntax';
+
+a {
+    text-decoration: none;
+    color: $blue;
+    :hover {
+        text-decoration: underline;
+    }
+    :visited {
+    color: darken($blue, 20%);
+    }
+}
