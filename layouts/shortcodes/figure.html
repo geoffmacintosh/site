@@ -35,33 +35,33 @@ Changes:
 
 <figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
     {{- if .Get "link" -}}
-        <a href="{{ .Get "link" }}"{{ with .Get "target" }} target="{{ . }}"{{ end }}{{ with .Get "rel" }} rel="{{ . }}"{{ end }}>
+  <a href="{{ .Get "link" }}"{{ with .Get "target" }} target="{{ . }}"{{ end }}{{ with .Get "rel" }} rel="{{ . }}"{{ end }}>
     {{- end }}
     <img
-        {{ if $src }}
-            sizes="(min-width: 780px) 528px, calc(100vw - 112px)"
-            {{/* only srcset images smaller than or equal to the src (original) image size, as Hugo will upscale small images */}}
-            srcset='
-            {{ range $sizes }}
-                   {{ if ge $src.Width . }}{{ ($src.Resize (printf "%sx" .)).Permalink }} {{ (printf "%sw" .) }},{{ end }}
-            {{ end }}'
+      {{ if $src }}
+      sizes="(min-width: 920px) 900px, (min-width: 860px) 800px, calc(92.59vw + 22px)"
+      {{/* only srcset images smaller than or equal to the src (original) image size, as Hugo will upscale small images */}}
+      srcset='
+             {{ range $sizes }}
+             {{ if ge $src.Width . }}{{ ($src.Resize (printf "%sx" .)).Permalink }} {{ (printf "%sw" .) }},{{ end }}
+             {{ end }}'
 
-            {{/* when no support for srcset (old browsers, RSS), we load small (800px) */}}
-            {{/* if image smaller than 800, then load the image itself */}}
-            {{ if ge $src.Width "800" }}src="{{ ($src.Resize "800x").Permalink }}"
-            {{ else }}src="{{ $src.Permalink }}"
-            {{ end }}
+      {{/* when no support for srcset (old browsers, RSS), we load small (800px) */}}
+      {{/* if image smaller than 800, then load the image itself */}}
+      {{ if ge $src.Width "800" }}src="{{ ($src.Resize "800x").Permalink }}"
+      {{ else }}src="{{ $src.Permalink }}"
+      {{ end }}
 
-        {{ else }}
-            {{/* fall back to stock hugo behaviour when image is not available in bundle */}}
-            src="{{ .Get "src" }}"
-        {{ end }}
+      {{ else }}
+      {{/* fall back to stock hugo behaviour when image is not available in bundle */}}
+      src="{{ .Get "src" }}"
+      {{ end }}
 
-        {{- if or (.Get "alt") (.Get "caption") }}
-            alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify| plainify }}{{ end }}"
-        {{- end -}}
-        {{- with .Get "width" }} width="{{ . }}"{{ end -}}
-        {{- with .Get "height" }} height="{{ . }}"{{ end -}}
+      {{- if or (.Get "alt") (.Get "caption") }}
+      alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify| plainify }}{{ end }}"
+      {{- end -}}
+      {{- with .Get "width" }} width="{{ . }}"{{ end -}}
+      {{- with .Get "height" }} height="{{ . }}"{{ end -}}
     /> <!-- Closing img tag -->
     {{- if .Get "link" }}</a>{{ end -}}
     {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr") -}}
