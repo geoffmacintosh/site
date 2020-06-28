@@ -3,23 +3,18 @@ $fg-lighter: lighten($fg-colour, 25%);
 $blue: #007dfa;
 $headline-font-stack: 'Helvetica Neue', 'Arial', sans-serif;
 $body-font-stack: 'Helvetica Neue', 'Arial', sans-serif;
+$screen-margin: 5px;
 
 *, *:before, *:after {
     box-sizing: border-box;
 }
 
-html {
-    //font-size: 62.5%;
-}
-
 body {
-    //font-size: 13px;
     font-size: 1rem;
     font-family: $body-font-stack;
     color: $fg-colour;
-    //width: 100%;
+    padding: 0 5px;
     margin: 0 auto;
-    padding: 0;
     line-height: 1.7;
     @media (prefers-color-scheme: dark) {
         color: #ebebeb;
@@ -28,15 +23,13 @@ body {
     max-width: 800px;
 }
 
-//@import 'second';
-//@import 'min770px';
-
 header {
-    margin: 25px 0;
+    margin: 0;
     #title {
         display: inline;
         font-size: 150%;
         font-weight: bold;
+        padding: 0 1em 0 0;
     }
     a {
         color: $fg-colour;
@@ -124,8 +117,8 @@ img {
     max-width: 100vw;
     @media (max-width: 900px) {
         //position: absolute;
-        left: 0;
-        width: 100%;
+        left: 0 - $screen-margin;
+        width: 100vw;
     }
 }
 
