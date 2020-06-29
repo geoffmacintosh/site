@@ -1,12 +1,10 @@
 +++
 title = "Elfeed"
 author = ["Geoff MacIntosh"]
-date = 2020-05-20T00:00:00-02:30
+date = 2020-06-29T00:00:00-02:30
 tags = ["emacs"]
 draft = false
 +++
-
-## Introduction {#introduction}
 
 Usually people start these things out by explaining what RSS is and all that. I don't think I'll be doing that. I like RSS because I like knowing when new things happen, and I don't want to check a bunch of different services all the time. Beyond that, I also really like the idea of being able to filter out feed items that don't appeal to me. I don't mind if I can only read stuff on my computer, so I haven't set up any sort of sync with my phone, although it should be possible to do that.
 
@@ -33,8 +31,7 @@ I have [Elfeed](https://github.com/skeeto/elfeed) set up in a single use-package
   <<mark-all-as-read>>)
 ```
 
-
-## Shortcuts {#shortcuts}
+One feature that people talk about a lot is setting up Elfeed to handle video-feeds separately from others, allowing you to avoid opening---say---a YouTube link in MPV instead of a browser window. That's pretty nice if you think YouTube's site is bad. There are a variety of ways to do that, but my current solution is to adjust how Emacs handles URLs, as documented in my [Web config]({{< relref "emacs-web" >}}). The advantage of my system is that it affects all links to YouTube, regardless of where they are. It's a general solution, not an Elfeed solution.
 
 I built a few shortcuts to switch between different tag views that I commonly use. Elfeed has support for Emacs' bookmarks, so I just needed to make bookmarks for the views I wanted. I set up the search how I like it (`s`) then made a bookmark entry (`C-x r m`) called, say `elfeed-all`. I can call that bookmark from anywhere in Emacs to go to that elfeed view, but I also decided to [steal some functions from Pragmatic Emacs](http://pragmaticemacs.com/emacs/read-your-rss-feeds-in-emacs-with-elfeed/) to make single-letter keybindings in elfeed.
 
@@ -48,9 +45,6 @@ I built a few shortcuts to switch between different tag views that I commonly us
   (bookmark-maybe-load-default-file)
   (bookmark-jump "elfeed-unread"))
 ```
-
-
-## Filters {#filters}
 
 Filters are kind of the star of Elfeed. I mostly use them to remove items that I don't want to see (or already see in other contexts---podcasts for example). I think it's all pretty straightforward. The only thing of note that I do is adding a debug tag to each hook that hides things. That way I can tell which filter it is that's causing problems when I make a stupid typo and suddenly a specific filter matches all entries.
 
@@ -102,9 +96,6 @@ Filters are kind of the star of Elfeed. I mostly use them to remove items that I
                               :remove 'unread))
 ```
 
-
-## Load and quit Elfeed nicely {#load-and-quit-elfeed-nicely}
-
 You don't need to do anything special to load Elfeed. You can set up a keybinding that runs `(elfeed)` and it should work. I took this function from [Pragmatic Emacs](http://pragmaticemacs.com/emacs/read-your-rss-feeds-in-emacs-with-elfeed/) when I first set up Elfeed a few years ago because I wanted to keep the database in sync between multiple computers. These helper functions ensure that the database is loaded and saved at the appropriate moments. I'm not sure there's any benefit to these if you only use them on one computer (as I do now) but I can't find any downsides either, so they stay.
 
 ```emacs-lisp
@@ -131,9 +122,6 @@ You don't need to do anything special to load Elfeed. You can set up a keybindin
   (jump-to-register :elfeed-fullscreen))
 ```
 
-
-## Mark all as read {#mark-all-as-read}
-
 You can just go post-by-post and use `r` to mark individual posts as read. I stole this function from [Mike Zamansky](https://cestlaz-nikola.github.io/posts/using-emacs-29%20elfeed/) because it seemed like a nice addition.
 
 ```emacs-lisp
@@ -143,9 +131,6 @@ You can just go post-by-post and use `r` to mark individual posts as read. I sto
     (mark-whole-buffer)
     (elfeed-search-untag-all-unread))
 ```
-
-
-## Faces {#faces}
 
 Changing the colours of an entry is neat, but not that useful. I mostly have this set up in order to learn how to do it, and as a vague novelty.
 
@@ -178,9 +163,6 @@ Changing the colours of an entry is neat, but not that useful. I mostly have thi
   "Face for elfeed comic entry."
   :group 'actuator-elfeed)
 ```
-
-
-## Feeds {#feeds}
 
 I'm actually surprised I don't use the excellent [Elfeed-org](https://github.com/remyhonig/elfeed-org) package. I have used it in the past, but I don't anymore. I don't like Org-mode documents where headlines are also links, and I don't value having much of a hiearchy for tags. I keep considering setting it up just so I can nicely rename all my feeds to be consistent, but I just haven't bothered.
 
@@ -292,11 +274,9 @@ I'm actually surprised I don't use the excellent [Elfeed-org](https://github.com
 Honestly, it feels weird to share my entire collection of feeds in public. Like I'm sharing something very personal. Anyway, that's it. That's my Elfeed.
 
 
-## Additional resources {#additional-resources}
+## Links {#links}
 
--   [Elfeed Rules! Noonker — thoughts, guides, etc](https://noonker.github.io/posts/2020-04-22-elfeed/)
--   [Posts tagged elfeed « null program](https://nullprogram.com/tags/elfeed/)
--   [elfeed | Pragmatic Emacs](http://pragmaticemacs.com/category/elfeed/)
--   [Using Emacs - 29 -elfeed part 1 | C'est la Z](https://cestlaz-nikola.github.io/posts/using-emacs-29%20elfeed/)
--   [Using Emacs - 30 - elfeed part 2 - Hydras | C'est la Z](https://cestlaz-nikola.github.io/posts/using-emacs-30-elfeed-2/)
--   [Using Emacs - 31 - elfeed part 3 - macros | C'est la Z](https://cestlaz-nikola.github.io/posts/using-emacs-31-elfeed-3/)
+-   [Elfeed Rules!](https://noonker.github.io/posts/2020-04-22-elfeed/)
+-   [Null Program (Elfeed's creator)](https://nullprogram.com/tags/elfeed/)
+-   [Pragmatic Emacs](http://pragmaticemacs.com/category/elfeed/)
+-   [C'est la Z](https://cestlaz-nikola.github.io/posts/using-emacs-29%20elfeed/)
