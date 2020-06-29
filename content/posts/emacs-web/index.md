@@ -6,8 +6,6 @@ tags = ["emacs"]
 draft = false
 +++
 
-## Introduction {#introduction}
-
 I don't use Emacs to browse the web, although it can be done, and I guess people do. I do a few browser-related things in it though, including storing my bookmarks in an Org-mode file and such. Here's what I've changed.
 
 Customizing the browse-url handlers is remarkably powerful. I don't use Emacs as a web browser much, but I do use a lot of links in Org-mode documents. If something isn't set here, it opens the URL in the default manner, which in my case is Safari ([Technology Preview](https://developer.apple.com/safari/technology-preview/)).
